@@ -3,10 +3,11 @@
 from typing import Tuple
 
 
-def index_range(page: int, page_size: int) -> Tuple:
-    end_index = page * page_size
-    start_index = end_index - page_size
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """simple helper function"""
+    end_index: int = page * page_size
+    start_index: int = end_index - page_size
 
-    result = (start_index, end_index)
+    result: Tuple = (start_index, end_index)
 
     return result
