@@ -3,7 +3,7 @@
 from typing import Tuple
 
 
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple:
     end_index = page * page_size
     start_index = end_index - page_size
 
