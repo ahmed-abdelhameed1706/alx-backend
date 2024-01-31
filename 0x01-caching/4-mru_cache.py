@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-""" MRUCache module """
+""" LRUCache module """
 from base_caching import BaseCaching
-from collections import defaultdict
+from datetime import datetime
 
 
-class MRUCache(BaseCaching):
+class LRUCache(BaseCaching):
     """fifo caching system"""
 
     def __init__(self):
         """init method"""
         super().__init__()
-        self.usage = defaultdict(int)
+        self.usage = {}
 
     def put(self, key, item):
         """method to assign to the dictionary"""
@@ -23,13 +23,13 @@ class MRUCache(BaseCaching):
             del self.usage[max_key]
             print(f"DISCARD: {max_key}")
 
+        self.usage[key] = datetime.now()
         self.cache_data[key] = item
-        self.usage[key] += 1
 
     def get(self, key):
         """method to retreive from the dictionary"""
         if key is None or self.cache_data.get(key) is None:
             return None
-        if key in self.usage:
-            self.usage[key] += 1
+
+        self.usage[key] = datetime.now()
         return self.cache_data[key]
