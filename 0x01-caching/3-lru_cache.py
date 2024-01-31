@@ -23,8 +23,8 @@ class LRUCache(BaseCaching):
             del self.usage[min_key]
             print(f"DISCARD: {min_key}")
 
-        self.cache_data[key] = item
         self.usage[key] += 1
+        self.cache_data[key] = item
 
     def get(self, key):
         """method to retreive from the dictionary"""
