@@ -17,7 +17,7 @@ class MRUCache(BaseCaching):
         if key is None or item is None:
             return
 
-        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             max_key = max(self.usage, key=self.usage.get)
             del self.cache_data[max_key]
             del self.usage[max_key]

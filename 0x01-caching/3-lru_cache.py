@@ -17,7 +17,7 @@ class LRUCache(BaseCaching):
         if key is None or item is None:
             return
 
-        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             min_key = min(self.usage, key=self.usage.get)
             del self.cache_data[min_key]
             del self.usage[min_key]
