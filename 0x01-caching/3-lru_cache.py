@@ -30,5 +30,6 @@ class LRUCache(BaseCaching):
         """method to retreive from the dictionary"""
         if key is None or self.cache_data.get(key) is None:
             return None
-        self.usage[key] += 1
+        if key in self.usage:
+            self.usage[key] += 1
         return self.cache_data[key]
