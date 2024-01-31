@@ -16,14 +16,14 @@ class LRUCache(BaseCaching):
         """method to assign to the dictionary"""
         if key is None or item is None:
             return
-        self.usage[key] += 1
+        self.cache_data[key] = item
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             min_key = min(self.usage, key=self.usage.get)
             del self.cache_data[min_key]
             del self.usage[min_key]
             print(f"DISCARD: {min_key}")
 
-        self.cache_data[key] = item
+        self.usage[key] += 1
 
     def get(self, key):
         """method to retreive from the dictionary"""
