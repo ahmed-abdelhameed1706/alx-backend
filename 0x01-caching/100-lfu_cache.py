@@ -21,9 +21,13 @@ class LFUCache(BaseCaching):
 
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             lowest_value = min(self.usage_count.values())
-            lowest_keys = [k for k, v in self.usage_count.items() if v == lowest_value]
+            lowest_keys = [
+                k for k, v in self.usage_count.items() if v == lowest_value
+            ]  # nopep8
             lowest_usage = min(self.usage[k] for k in lowest_keys)
-            key_to_remove = min(k for k in lowest_keys if self.usage[k] == lowest_usage)
+            key_to_remove = min(
+                k for k in lowest_keys if self.usage[k] == lowest_usage
+            )  # nopep8
 
             del self.cache_data[key_to_remove]
             del self.usage[key_to_remove]
