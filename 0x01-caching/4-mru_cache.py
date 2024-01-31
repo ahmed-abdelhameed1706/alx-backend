@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""" LRUCache module """
+""" MRUCache module """
 from base_caching import BaseCaching
 from datetime import datetime
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """fifo caching system"""
 
     def __init__(self):
