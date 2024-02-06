@@ -41,8 +41,10 @@ def get_locale():
         return request.args.get("locale")
     if g.user and g.user.get("locale") in app.config["LANGUAGES"]:
         return g.user.get("locale")
-    if request.headers.get("locale") in app.config["LANGUAGES"]:
-        return request.headers.get("locale")
+    if request.headers.get("Accept-Language"):
+        languages = request.headers.get("Accept-Language").split(",")
+        if languages and languages[0] in app.config["LANGUAGES"]:
+            return languages[0]
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
