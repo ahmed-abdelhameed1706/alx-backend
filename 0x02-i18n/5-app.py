@@ -54,8 +54,7 @@ def get_user():
 def before_request():
     """before request"""
     user = get_user()
-    if user:
-        g.user = user
+    g.user = user
 
 
 if __name__ == "__main__":
