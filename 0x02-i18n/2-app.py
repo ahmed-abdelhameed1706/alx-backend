@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" basic app """
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
@@ -16,6 +17,7 @@ app.config.from_object(Config)
 
 @app.route("/")
 def index():
+    """index function"""
     return render_template("2-index.html")
 
 
